@@ -2,6 +2,8 @@ library(ggplot2)
 library(tidyverse)
 theme_set(theme_bw())
 
+summary(ds_salaries)
+
 # rename columns
 names(ds_salaries)[3] <- "Experience Level"
 names(ds_salaries)[8] <- "Salary in USD"
@@ -28,5 +30,6 @@ median_all
 ggplot(ds_salaries, aes(x = `Experience Level` , y = `Salary in USD`)) + geom_boxplot() + scale_y_continuous(limits = quantile(ds_salaries$salary, c(0.1, 0.91)))
 ggplot(ds_salaries, aes(x = `Company Size`)) + geom_bar()
 ggplot(data=ds_salaries) + geom_bar(aes(x = `Company Size`, y = `Salary in USD`, fill = `Company Size`), stat = "summary", fun = "median")
+
 
 
